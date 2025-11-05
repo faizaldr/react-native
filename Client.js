@@ -1,9 +1,13 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL:'http://10.10.206.169:3000',
+    baseURL:'http://10.10.207.174:3000',
     timeout: 5000,
 })
+// POST, Menyimpan data baru
+// GET, mengambil data 
+// PUT, mengubah
+// DELETE, menghapus 
 
 export async function kirimPresensi(lat,lon,nama,waktu){
     try {

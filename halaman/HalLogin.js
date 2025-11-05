@@ -5,7 +5,7 @@ import { useZustand } from "../useZustand";
 
 export default function HalLogin(){
 
-    const [username, setUsername] = useState('')         //state lokal
+    const [username, setUsername] = useState("badu")         //state lokal
     const [password, setPassword] = useState('')         //state lokal
     const { login } = useZustand()                       //state global
 
@@ -19,11 +19,14 @@ export default function HalLogin(){
 
     return(
         <View style={style.container}>
-            <Text>Ini Halaman Login</Text>
-            <TextInput style={style.input} placeholder="Masukkan Username" onChangeText={setUsername}/>
+            <Text>Ini Halaman Login, {username}</Text>
+            <TextInput style={style.input} placeholder="Masukkan Username" onChangeText={(text)=>setUsername(text)}/>
             <TextInput style={style.input} placeholder="Masukkan Password" secureTextEntry onChangeText={setPassword}/>
             <TouchableOpacity style={style.button} onPress={loginKlik}>
                 <Text>Login</Text>
+            </TouchableOpacity>
+                        <TouchableOpacity style={style.button} onPress={()=>{setUsername("Faizal")}}>
+                <Text>Ubah Username</Text>
             </TouchableOpacity>
         </View>
     )
