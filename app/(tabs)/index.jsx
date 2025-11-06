@@ -23,6 +23,7 @@ export default function AddStudent() {
         const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
         setLatitude(pos.coords.latitude);
         setLongitude(pos.coords.longitude);
+        console.log(latitude);
     }
 
     return (
