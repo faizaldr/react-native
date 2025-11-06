@@ -34,9 +34,12 @@ export default function AddStudent() {
                 <Card>
                     <Card.Title title="Form Presensi" />
                     <Card.Content style={{ gap: 10 }}>
-                        <TextInput label="Nama mahasiswa" value={name} onChangeText={{ setName }} mode='outlined' />
-                        <TextInput label="Mata kuliah" value={course} onChangeText={{ setCourse }} mode='outlined' />
-                        <Button mode='containered' onPress={getLocation} icon={loadingLoc ? 'progress-clock' : 'crosshairs-gps'}>
+                        <TextInput label="Nama mahasiswa" value={name}
+                            onChangeText={{ setName }} mode='outlined' />
+                        <TextInput label="Mata kuliah" value={course}
+                            onChangeText={{ setCourse }} mode='outlined' />
+                        <Button mode='containered' onPress={getLocation}
+                            icon={loadingLoc ? 'progress-clock' : 'crosshairs-gps'}>
                             {loadingLoc ? "Mengambil Lokasi" : "ambil lokasi"}
                         </Button>
                         <Button disabled={latitude == null} mode='containered'
