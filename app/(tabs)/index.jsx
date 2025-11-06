@@ -42,6 +42,7 @@ export default function AddStudent() {
                             icon={loadingLoc ? 'progress-clock' : 'crosshairs-gps'}>
                             {loadingLoc ? "Mengambil Lokasi" : "ambil lokasi"}
                         </Button>
+                        <View style={{ alignItems: "center" }} ><Text>{latitude}, {longitude}</Text></View>
                         <Button disabled={latitude == null} mode='containered'
                             onPress={getLocation} icon={latitude == null ? 'near-me-disabled' : 'send'}>
                             Kirim
