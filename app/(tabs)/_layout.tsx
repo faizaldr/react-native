@@ -27,7 +27,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="show_student"
         options={{
           title: 'Daftar',
           tabBarIcon: ({ color }) => (

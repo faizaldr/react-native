@@ -7,6 +7,14 @@
       "nama": "badu",
       "mata_kuliah": "IT",
       "waktu": "2025-11-06T07:00:46.004Z"
+    },
+    {
+      "id": "fc70",
+      "lat": -7.30387,
+      "lon": 110.50867,
+      "nama": "Mahalini",
+      "mata_kuliah": "Ilmu Filsafat",
+      "waktu": "2025-11-06T07:52:47.652Z"
     }
   ]
 }

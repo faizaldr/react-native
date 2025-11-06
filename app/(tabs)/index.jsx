@@ -20,7 +20,8 @@ export default function AddStudent() {
     const sentPresention = async (latitude, longitude, name, course) => {
         try {
             const time = new Date();
-            const res = await api.post('/mahasiswa', { lat: latitude, lon: longitude, nama: name, mata_kuliah: course, waktu: time });
+            const res = await api.post('/mahasiswa', 
+                { lat: latitude, lon: longitude, nama: name, mata_kuliah: course, waktu: time });
             if (res.status == 200 || res.status == 201) {
                 Alert.alert(`Data berhasil terkirim`);
             }
