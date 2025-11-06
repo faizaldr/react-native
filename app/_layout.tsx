@@ -5,6 +5,7 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
+// mengabaikan folder "tabs" supaya tidak dianggap sebagai url routing pada expo react
 export const unstable_settings = {
   anchor: '(tabs)',
 };
