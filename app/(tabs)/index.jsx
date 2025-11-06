@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as Location from 'expo-location';
 import { useState } from 'react';
 import { Alert, ScrollView, Text, View } from 'react-native';
@@ -10,6 +11,24 @@ export default function AddStudent() {
     const [latitude, setLatitude] = useState();
     const [longitude, setLongitude] = useState();
     const [loadingLoc, setLoadingLoc] = useState();
+
+    const api = axios.create({
+        baseURL: "http://10.10.1.26:3000",
+        timeout: 5000
+
+    })
+    const sentPresention = async (latitude, longitude, name, course) => {
+        try {
+            const time = new Date();
+            const res = await api.post('/mahasiswa', { lat: latitude, lon: longitude, nama: name, mata_kuliah: course, waktu: time });
+            if (res.status == 200 || res.status == 201) {
+                Alert.alert(`Data berhasil terkirim`);
+            }
+            return res.data;
+        } catch (error) {
+            Alert.alert(`Data tidak terkirim, ${error}`);
+        }
+    }
 
     const getLocation = async () => {
         setLoadingLoc(true);
@@ -35,16 +54,16 @@ export default function AddStudent() {
                     <Card.Title title="Form Presensi" />
                     <Card.Content style={{ gap: 10 }}>
                         <TextInput label="Nama mahasiswa" value={name}
-                            onChangeText={{ setName }} mode='outlined' />
+                            onChangeText={setName} mode='outlined' />
                         <TextInput label="Mata kuliah" value={course}
-                            onChangeText={{ setCourse }} mode='outlined' />
+                            onChangeText={setCourse} mode='outlined' />
                         <Button mode='containered' onPress={getLocation}
                             icon={loadingLoc ? 'progress-clock' : 'crosshairs-gps'}>
                             {loadingLoc ? "Mengambil Lokasi" : "ambil lokasi"}
                         </Button>
                         <View style={{ alignItems: "center" }} ><Text>{latitude}, {longitude}</Text></View>
                         <Button disabled={latitude == null} mode='containered'
-                            onPress={getLocation} icon={latitude == null ? 'near-me-disabled' : 'send'}>
+                            onPress={() => { sentPresention(latitude, longitude, name, course); }} icon={latitude == null ? 'alarm-off' : 'send'}>
                             Kirim
                         </Button>
                     </Card.Content>
