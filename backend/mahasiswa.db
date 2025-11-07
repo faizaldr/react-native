@@ -1,4 +1,8 @@
 {
+  "users": [
+    { "id": 1, "username": "faizal", "password": "12345", "name": "Faizal Damar" },
+    { "id": 2, "username": "rina", "password": "abcde", "name": "Rina Putri" }
+  ],
   "mahasiswa": [
     {
       "id": "aad0",
