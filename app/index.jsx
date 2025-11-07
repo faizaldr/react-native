@@ -21,23 +21,29 @@ export default function LoginScreen() {
 
     const actionLogin = async () => {
         setLoading(!loading);
-        const res = await api.post('/login', { username: username, password: password });
-        if (res.status == 200) {
-            await AsyncStorage.setItem("auth_token", String(res.data.token));
-            router.replace("/(tabs)")
-        } else {
+        try {
+            const res = await api.post('/login', { username: username, password: password });
+
+            if (res.status == 200) {
+                await AsyncStorage.setItem("auth_token", String(res.data.token));
+                router.replace("/(tabs)")
+            } else {
+                Alert.alert("Login Gagal");
+            }
+            setLoading(!loading);
+
+        } catch (error) {
             Alert.alert("Login Gagal");
         }
-        setLoading(!loading);
     }
 
     return (
-        <KeyboardAvoidingView style={{flex: 1}}>
+        <KeyboardAvoidingView style={{ flex: 1 }}>
             <ImageBackground source={require('../assets/images/splash-icon.png')} style={{ flex: 1 }} resizeMode='center'>
                 <View style={{ padding: 16 }}>
                     <Text style={{ flex: 1, justifyContent: 'center', padding: 16, gap: 16 }}>LOGIN USER MAHASISWA</Text>
                     <Card style={{}}>
-                        <Card.Content style={{ gap: 12, backgroundColor: "#0aa79171" }}>
+                        <Card.Content style={{ gap: 12, backgroundColor: "#e9ad3f71" }}>
                             <TextInput label="Username" value={username} onChangeText={setUsername}
                                 left={<TextInput.Icon icon="account" />} mode='outlined' />
                             <TextInput label="Password" value={password} onChangeText={setPassword}
